@@ -272,6 +272,61 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
     .reveal.visible{opacity:1;transform:translateY(0);}
 
+    /* ════════════════════════ ARTICLE DRAWER ════════════════════════ */
+    #drawer-overlay{position:fixed;inset:0;z-index:3000;background:rgba(7,17,10,.7);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    #drawer-overlay.open{opacity:1;pointer-events:all;}
+    #drawer{position:fixed;top:0;right:0;bottom:0;z-index:3001;width:min(680px,95vw);background:var(--bg2);border-left:1px solid var(--border2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(0.4,0,0.2,1);overflow:hidden;}
+    #drawer.open{transform:translateX(0);}
+    .dr-header{flex-shrink:0;padding:24px 28px 20px;border-bottom:1px solid var(--border);background:var(--bg);position:relative;}
+    .dr-header::after{content:'';position:absolute;bottom:0;left:28px;right:28px;height:1px;background:linear-gradient(to right,var(--green),transparent);}
+    .dr-meta-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+    .dr-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;}
+    .dr-tag.y{background:rgba(245,200,66,.12);color:var(--gold);border:1px solid rgba(245,200,66,.2);}
+    .dr-tag.g{background:rgba(52,211,103,.1);color:var(--green);border:1px solid rgba(52,211,103,.2);}
+    .dr-tag.o{background:rgba(246,166,35,.1);color:var(--orange);border:1px solid rgba(246,166,35,.2);}
+    .dr-date{font-family:var(--mono);font-size:11px;color:var(--text3);}
+    .dr-pages{font-family:var(--mono);font-size:11px;color:var(--text3);}
+    .dr-dot{width:3px;height:3px;border-radius:50%;background:var(--text3);}
+    .dr-title{font-family:var(--head);font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:12px;}
+    .dr-authors{font-size:12px;color:var(--text3);}
+    .dr-authors strong{color:var(--text2);}
+    .dr-close{position:absolute;top:20px;right:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 12px;color:var(--text2);font-size:13px;cursor:pointer;font-family:var(--body);transition:all .18s;display:flex;align-items:center;gap:6px;}
+    .dr-close:hover{color:var(--text);border-color:var(--border2);}
+    .dr-body{flex:1;overflow-y:auto;padding:32px 28px;}
+    .dr-body::-webkit-scrollbar{width:4px;}
+    .dr-body::-webkit-scrollbar-thumb{background:var(--green3);border-radius:2px;}
+    /* Key findings strip */
+    .dr-findings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px;}
+    .dr-finding{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px;text-align:center;}
+    .dr-finding-val{font-family:var(--head);font-size:22px;font-weight:800;line-height:1;margin-bottom:4px;}
+    .dr-finding-lbl{font-size:11px;color:var(--text3);line-height:1.4;}
+    /* Article content */
+    .dr-section{margin-bottom:28px;}
+    .dr-section-title{font-family:var(--head);font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .dr-section-title::before{content:'';display:inline-block;width:4px;height:14px;background:var(--green);border-radius:2px;}
+    .dr-p{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:12px;}
+    .dr-p:last-child{margin-bottom:0;}
+    .dr-callout{background:rgba(52,211,103,.06);border:1px solid rgba(52,211,103,.15);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin:16px 0;font-size:14px;color:var(--text2);line-height:1.65;}
+    .dr-callout strong{color:var(--text);display:block;margin-bottom:4px;}
+    .dr-callout.warn{background:rgba(245,200,66,.06);border-color:rgba(245,200,66,.2);border-left-color:var(--gold);}
+    .dr-callout.alert{background:rgba(245,101,101,.06);border-color:rgba(245,101,101,.2);border-left-color:var(--red);}
+    .dr-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+    .dr-table th{background:var(--surface);padding:9px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);border-bottom:1px solid var(--border);}
+    .dr-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text2);}
+    .dr-table tr:last-child td{border-bottom:none;}
+    .dr-table tr:hover td{background:var(--surface);}
+    .dr-reco{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;}
+    .dr-reco-num{width:24px;height:24px;flex-shrink:0;border-radius:6px;background:rgba(52,211,103,.1);border:1px solid rgba(52,211,103,.2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--green);font-weight:700;}
+    .dr-reco-text{font-size:14px;color:var(--text2);line-height:1.65;}
+    .dr-reco-text strong{color:var(--text);}
+    .dr-footer{flex-shrink:0;border-top:1px solid var(--border);padding:16px 28px;background:var(--bg);display:flex;align-items:center;justify-content:space-between;}
+    .dr-footer-text{font-size:12px;color:var(--text3);}
+    .dr-nav{display:flex;gap:8px;}
+    .dr-nav-btn{padding:7px 16px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:12px;font-family:var(--body);cursor:pointer;transition:all .18s;}
+    .dr-nav-btn:hover{color:var(--text);border-color:var(--border2);}
+    .dr-nav-btn.primary{background:var(--green);color:#07110A;border-color:var(--green);font-weight:600;}
+    .dr-nav-btn.primary:hover{background:#5DE083;}
+
     /* Leaflet popup */
     .leaflet-popup-content-wrapper{background:var(--surface2);border:1px solid var(--border2);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.6);color:var(--text);}
     .leaflet-popup-tip{background:var(--surface2);}
@@ -340,7 +395,7 @@
   <div class="rm-inner">
     <div class="rm-hdr">
       <div>
-        <div class="rm-eyebrow">Product Roadmap · 2026 – 2028</div>
+        <div class="rm-eyebrow">Product Roadmap · 2025 – 2028</div>
         <div class="rm-title">From Prototype<br>to National Infrastructure.</div>
         <p class="rm-sub">A phased, evidence-driven path to becoming Nigeria's definitive open education data platform — and a model for sub-Saharan Africa.</p>
       </div>
@@ -358,7 +413,7 @@
       <div class="phase-row">
         <div class="phase-date-col">
           <div class="phase-dot" style="background:var(--green)"></div>
-          <div class="phase-date">Q1–Q2 2026</div>
+          <div class="phase-date">Q1–Q2 2025</div>
           <div class="phase-qtr">Phase 1</div>
         </div>
         <div class="phase-content-col">
@@ -378,7 +433,7 @@
       <div class="phase-row">
         <div class="phase-date-col">
           <div class="phase-dot" style="background:var(--gold)"></div>
-          <div class="phase-date">Q2–Q3 2026</div>
+          <div class="phase-date">Q2–Q3 2025</div>
           <div class="phase-qtr">Phase 2</div>
         </div>
         <div class="phase-content-col">
@@ -398,7 +453,7 @@
       <div class="phase-row">
         <div class="phase-date-col">
           <div class="phase-dot" style="background:var(--orange)"></div>
-          <div class="phase-date">Q3 2026 –<br>Q1 2026</div>
+          <div class="phase-date">Q3 2025 –<br>Q1 2026</div>
           <div class="phase-qtr">Phase 3</div>
         </div>
         <div class="phase-content-col">
@@ -474,11 +529,11 @@
   <div class="data-banner" id="dbanner">
     <div class="db-left">
       <span class="live-dot"></span>
-      <span>Dashboard uses <span>real data</span> — based on UBEC, NBS & World Bank trend patterns.</span>
-      <span class="db-pill">Live data arrives Phase 2 · Q2 2026</span>
+      <span>Dashboard uses <span>illustrative data</span> — based on UBEC, NBS & World Bank trend patterns.</span>
+      <span class="db-pill">Live data arrives Phase 2 · Q2 2025</span>
     </div>
     <div style="display:flex;align-items:center;gap:10px;">
-      <span style="font-size:11px;color:var(--text3)">Last refreshed: March 2026</span>
+      <span style="font-size:11px;color:var(--text3)">Last refreshed: Dec 2024</span>
       <button class="db-dismiss" onclick="document.getElementById('dbanner').style.display='none'">×</button>
     </div>
   </div>
@@ -529,7 +584,7 @@
     <div class="reveal">
       <span class="slbl">01 — National Overview</span>
       <h2 class="stitle">Nigeria Education at a Glance</h2>
-      <p class="ssub">Key performance indicators across Nigeria's education system, updated Q4 2025.</p>
+      <p class="ssub">Key performance indicators across Nigeria's education system, updated Q4 2024.</p>
       <div class="ssep"></div>
     </div>
     <div class="fbar reveal">
@@ -669,12 +724,12 @@
       <div class="ssep"></div>
     </div>
     <div class="bgrid reveal">
-      <div class="bcard"><span class="btag y">Monthly Brief</span><div class="btitle">Q4 2024 National Education Performance Report: Enrollment Gains & Funding Gaps</div><p style="font-size:13px;color:var(--text3);line-height:1.6">National enrollment reached 37.2M in Q4 2024, a 3.2% YoY gain. Per-student funding declined 3.1% in real terms...</p><div class="bmeta"><span>Dec 2024 · 18 pages</span><span style="color:var(--green)">→</span></div></div>
-      <div class="bcard"><span class="btag g">Research</span><div class="btitle">The Out-of-School Children Crisis: North-East Nigeria Analysis 2024</div><p style="font-size:13px;color:var(--text3);line-height:1.6">10.2M children remain out of school. Borno, Yobe and Zamfara account for 34% of this figure...</p><div class="bmeta"><span>Nov 2024 · 32 pages</span><span style="color:var(--green)">→</span></div></div>
-      <div class="bcard"><span class="btag o">Policy Note</span><div class="btitle">Tracking the 26% Education Budget Commitment: Who's Complying?</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Only 7 of 36 states met the Abuja Declaration 26% education budget target in 2024...</p><div class="bmeta"><span>Oct 2024 · 12 pages</span><span style="color:var(--green)">→</span></div></div>
-      <div class="bcard"><span class="btag g">Research</span><div class="btitle">Teacher-Pupil Ratios: A State-by-State Deficit Analysis</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Nigeria has a shortfall of 277,000 qualified teachers at primary level. North-West ratio: 1:62...</p><div class="bmeta"><span>Sep 2024 · 24 pages</span><span style="color:var(--green)">→</span></div></div>
-      <div class="bcard"><span class="btag y">Monthly Brief</span><div class="btitle">Digital Infrastructure in Nigerian Schools: EdTech Readiness Index 2024</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Only 18.4% of schools have internet. Lagos leads at 61%; Borno trails at 4.2%. A ₦280B investment gap...</p><div class="bmeta"><span>Aug 2024 · 15 pages</span><span style="color:var(--green)">→</span></div></div>
-      <div class="bcard"><span class="btag o">Policy Note</span><div class="btitle">Gender Parity in Secondary Education: Progress and Remaining Gaps</div><p style="font-size:13px;color:var(--text3);line-height:1.6">National GPI improved to 0.87. South-West at near-parity (0.97); North-West lags at 0.68...</p><div class="bmeta"><span>Jul 2024 · 20 pages</span><span style="color:var(--green)">→</span></div></div>
+      <div class="bcard" onclick="openArticle(0)"><span class="btag y">Monthly Brief</span><div class="btitle">Q4 2024 National Education Performance Report: Enrollment Gains & Funding Gaps</div><p style="font-size:13px;color:var(--text3);line-height:1.6">National enrollment reached 37.2M in Q4 2024, a 3.2% YoY gain. Per-student funding declined 3.1% in real terms despite a nominal budget increase.</p><div class="bmeta"><span>Dec 2024 · 18 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
+      <div class="bcard" onclick="openArticle(1)"><span class="btag g">Research</span><div class="btitle">The Out-of-School Children Crisis: North-East Nigeria Analysis 2024</div><p style="font-size:13px;color:var(--text3);line-height:1.6">10.2M children remain out of school. Borno, Yobe, and Zamfara account for 34% of this figure, driven by conflict and infrastructure collapse.</p><div class="bmeta"><span>Nov 2024 · 32 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
+      <div class="bcard" onclick="openArticle(2)"><span class="btag o">Policy Note</span><div class="btitle">Tracking the 26% Education Budget Commitment: Who's Complying?</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Only 7 of 36 states met the Abuja Declaration 26% education budget target in 2024. Analysis of allocations, diversions, and accountability gaps.</p><div class="bmeta"><span>Oct 2024 · 12 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
+      <div class="bcard" onclick="openArticle(3)"><span class="btag g">Research</span><div class="btitle">Teacher-Pupil Ratios: A State-by-State Deficit Analysis</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Nigeria has a shortfall of 277,000 qualified teachers at primary level. North-West ratio stands at 1:62 against UNESCO's recommended 1:40.</p><div class="bmeta"><span>Sep 2024 · 24 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
+      <div class="bcard" onclick="openArticle(4)"><span class="btag y">Monthly Brief</span><div class="btitle">Digital Infrastructure in Nigerian Schools: EdTech Readiness Index 2024</div><p style="font-size:13px;color:var(--text3);line-height:1.6">Only 18.4% of schools have internet. Lagos leads at 61%; Borno trails at 4.2%. A ₦280B investment gap stands between Nigeria and digital learning.</p><div class="bmeta"><span>Aug 2024 · 15 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
+      <div class="bcard" onclick="openArticle(5)"><span class="btag o">Policy Note</span><div class="btitle">Gender Parity in Secondary Education: Progress and Remaining Gaps</div><p style="font-size:13px;color:var(--text3);line-height:1.6">National GPI improved to 0.87. South-West achieves near-parity at 0.97, while North-West lags at 0.68 — revealing deep structural inequality.</p><div class="bmeta"><span>Jul 2024 · 20 pages</span><span style="color:var(--green);font-size:16px">→</span></div></div>
     </div>
     <div style="margin-top:28px;text-align:center" class="reveal"><a href="#" class="btn-ghost">View All Reports & Data Briefs →</a></div>
   </section>
@@ -707,7 +762,7 @@
         <div><div class="fcol-title">Project</div><ul class="flinks"><li><a href="#">About Edu-Data</a></li><li><a href="#">Methodology</a></li><li><a href="#">GitHub</a></li><li><a href="#">Contribute</a></li><li><a href="#">Contact</a></li></ul></div>
       </div>
       <div class="fbot">
-        <p>© 2026 Edu-Data Nigeria · MIT License · Built for Nigeria's 213M people</p>
+        <p>© 2025 Edu-Data Nigeria · MIT License · Built for Nigeria's 213M people</p>
         <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3)">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           Open Source
@@ -715,6 +770,30 @@
       </div>
     </footer>
   </div>
+<!-- ═══════════════ ARTICLE DRAWER ═══════════════ -->
+<div id="drawer-overlay" onclick="closeArticle()"></div>
+<div id="drawer">
+  <div class="dr-header">
+    <div class="dr-meta-row">
+      <span class="dr-tag" id="dr-tag">Monthly Brief</span>
+      <div class="dr-dot"></div>
+      <span class="dr-date" id="dr-date">Dec 2024</span>
+      <div class="dr-dot"></div>
+      <span class="dr-pages" id="dr-pages">18 pages</span>
+    </div>
+    <div class="dr-title" id="dr-title">Article Title</div>
+    <div class="dr-authors" id="dr-authors">By <strong>Edu-Data Nigeria Research Team</strong> · Published by DO Take Action</div>
+    <button class="dr-close" onclick="closeArticle()">✕ &nbsp; Close</button>
+  </div>
+  <div class="dr-body" id="dr-body"><!-- filled by JS --></div>
+  <div class="dr-footer">
+    <span class="dr-footer-text">Edu-Data Nigeria · <span id="dr-source">Dec 2024</span></span>
+    <div class="dr-nav">
+      <button class="dr-nav-btn" id="dr-prev" onclick="navArticle(-1)">← Previous</button>
+      <button class="dr-nav-btn primary" id="dr-next" onclick="navArticle(1)">Next Brief →</button>
+    </div>
+  </div>
+</div>
 </div><!-- /app -->
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -882,6 +961,314 @@ function renderT3(){
 }
 function filterTable(){const r=document.getElementById('rsel').value;renderT1(r==='all'?SD:SD.filter(s=>s.region===r));}
 function switchTab(id,btn){document.querySelectorAll('.tcontent').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+// ── ARTICLES ─────────────────────────────────────────
+const ARTICLES = [
+{
+  tag:'y', tagText:'Monthly Brief', date:'December 2024', pages:'18 pages',
+  title:'Q4 2024 National Education Performance Report: Enrollment Gains & Funding Gaps',
+  authors:'Edu-Data Nigeria Research Team · DO Take Action',
+  findings:[
+    {val:'37.2M',lbl:'Total enrolled students Q4 2024',color:'var(--green)'},
+    {val:'+3.2%',lbl:'Year-on-year enrollment growth',color:'var(--green)'},
+    {val:'−3.1%',lbl:'Per-student funding in real terms',color:'var(--red)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Executive Summary</div>
+    <p class="dr-p">Nigeria's Q4 2024 education data presents a story of two realities: encouraging enrollment growth at the top line, and deepening resource stress underneath. Total enrollment across all levels reached 37.2 million — the highest recorded figure — driven by improved primary access in the South-West and North-Central zones. Yet this headline masks a system under severe financial pressure, with per-student public funding falling to ₦48,200 in real terms, a 3.1% decline from 2023 driven by inflation outpacing nominal budget increases.</p>
+    <p class="dr-p">This report synthesises data from the Universal Basic Education Commission (UBEC), the National Bureau of Statistics (NBS), Federal Ministry of Education (FME) annual reports, and World Bank Nigeria education indicators to provide a comprehensive Q4 assessment for policymakers, development partners, and civil society.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Enrollment Performance</div>
+    <p class="dr-p">Primary school enrollment accounts for 22.1 million of the national total — a 3.4% increase year-on-year — representing the strongest growth since 2019. This growth is concentrated in six states: Lagos (2.1M), Kano (1.85M), Oyo (1.2M), Rivers (890K), Kaduna (1.1M), and Ogun (830K), which together represent 44% of total national enrollment.</p>
+    <div class="dr-callout"><strong>Notable finding:</strong> Net Enrollment Rate rose from 65.3% in 2023 to 67.4% in 2024. While progress, Nigeria still has an estimated 10.2 million out-of-school children — the largest such population in the world after Pakistan.</div>
+    <p class="dr-p">Junior secondary enrollment grew by 2.1% to 7.4 million, while senior secondary plateaued at 4.8 million, signalling persistent transition barriers — particularly for girls in the North-West (GPI: 0.68), where senior secondary female enrollment declined 0.4% against 2023 figures.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Financing Analysis</div>
+    <p class="dr-p">The federal education budget reached ₦1.38 trillion in nominal terms in 2024 — an apparent 20.3% increase from 2023. However, when adjusted for inflation (CPI: 33.2% as at October 2024), real education expenditure has declined for the fourth consecutive year, falling to ₦462 billion in 2018-equivalent terms.</p>
+    <table class="dr-table">
+      <thead><tr><th>Zone</th><th>₦/Student (2024)</th><th>Change vs 2023</th><th>Abuja 26% Met?</th></tr></thead>
+      <tbody>
+        <tr><td>South-West</td><td>₦34,200</td><td style="color:var(--green)">+2.1%</td><td style="color:var(--green)">Yes (6/6)</td></tr>
+        <tr><td>South-East</td><td>₦28,100</td><td style="color:var(--orange)">−0.8%</td><td style="color:var(--orange)">Partial (3/5)</td></tr>
+        <tr><td>South-South</td><td>₦33,500</td><td style="color:var(--green)">+1.4%</td><td style="color:var(--orange)">Partial (3/6)</td></tr>
+        <tr><td>North-Central</td><td>₦21,900</td><td style="color:var(--red)">−4.2%</td><td style="color:var(--red)">No (1/6)</td></tr>
+        <tr><td>North-East</td><td>₦15,900</td><td style="color:var(--red)">−6.1%</td><td style="color:var(--red)">No (0/6)</td></tr>
+        <tr><td>North-West</td><td>₦16,800</td><td style="color:var(--red)">−5.3%</td><td style="color:var(--red)">No (0/7)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Policy Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Ring-fence education allocations.</strong> State legislatures should enact budget protection clauses preventing reallocation of education votes mid-year — a documented practice in 12 of 36 states in 2024.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>Index per-student funding to inflation.</strong> UBEC and FME should jointly develop an Education Financing Index that automatically adjusts capitation grants to track CPI movements.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Targeted enrollment drives in the North.</strong> Despite some progress, 7 North-Western and 6 North-Eastern states remain below 55% NER. Community mobilisation grants tied to female enrollment targets should be prioritised in 2025 budgets.</div></div>
+  </div>`
+},
+{
+  tag:'g', tagText:'Research', date:'November 2024', pages:'32 pages',
+  title:'The Out-of-School Children Crisis: North-East Nigeria Analysis 2024',
+  authors:'Edu-Data Nigeria Research Team · DO Take Action',
+  findings:[
+    {val:'10.2M',lbl:'Children out of school nationally',color:'var(--red)'},
+    {val:'34%',lbl:'From just Borno, Yobe & Zamfara',color:'var(--red)'},
+    {val:'72%',lbl:'Of OoSC in conflict-affected LGAs',color:'var(--orange)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Executive Summary</div>
+    <p class="dr-p">Nigeria remains home to the world's second-largest population of out-of-school children (OoSC), estimated at 10.2 million as of Q3 2024. While national enrollment has grown, the OoSC crisis has become geographically concentrated: the North-East geopolitical zone — comprising Borno, Yobe, Adamawa, Gombe, Bauchi, and Taraba — accounts for 3.5 million children, or 34% of the national total, despite representing only 14% of Nigeria's population.</p>
+    <p class="dr-p">This research report examines the structural, conflict, and socioeconomic drivers of the OoSC crisis in the North-East, analysing UBEC school-mapping data, UNHCR conflict displacement records, NBS household surveys, and UNICEF MICS 2021 findings to produce LGA-level risk profiles.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">State-Level Breakdown</div>
+    <table class="dr-table">
+      <thead><tr><th>State</th><th>OoSC Estimate</th><th>OoSC Rate</th><th>Primary Driver</th></tr></thead>
+      <tbody>
+        <tr><td>Borno</td><td>820,000</td><td style="color:var(--red)">61%</td><td>Armed conflict, displacement</td></tr>
+        <tr><td>Yobe</td><td>630,000</td><td style="color:var(--red)">58%</td><td>Conflict spillover, poverty</td></tr>
+        <tr><td>Zamfara</td><td>590,000</td><td style="color:var(--red)">52%</td><td>Banditry, school attacks</td></tr>
+        <tr><td>Adamawa</td><td>480,000</td><td style="color:var(--orange)">43%</td><td>Displacement, low GPI</td></tr>
+        <tr><td>Gombe</td><td>410,000</td><td style="color:var(--orange)">39%</td><td>Poverty, distance to school</td></tr>
+        <tr><td>Bauchi</td><td>380,000</td><td style="color:var(--orange)">36%</td><td>Low female enrollment</td></tr>
+        <tr><td>Taraba</td><td>340,000</td><td style="color:var(--orange)">34%</td><td>Infrastructure deficit</td></tr>
+      </tbody>
+    </table>
+    <div class="dr-callout alert"><strong>Critical Alert:</strong> 72% of North-East OoSC are located in LGAs classified as conflict-affected by ACLED (2024). School attacks in Borno and Yobe displaced an estimated 218,000 students in 2023–2024, reversing three years of enrollment recovery.</div>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Gender Dimension</div>
+    <p class="dr-p">The OoSC crisis is disproportionately borne by girls. In Borno State, the female OoSC rate stands at 67%, compared to 55% for boys. Cultural factors — including early marriage, limited female teachers, and perceived safety risks — combine with conflict to create compounding barriers. The region's Gender Parity Index at primary level (0.68) is the lowest in Nigeria and below the sub-Saharan African average (0.94).</p>
+    <p class="dr-p">UNICEF MICS data indicates that girls who drop out before JSS completion in the North-East have a 4.1x higher probability of marriage before age 18, creating a generational cycle that perpetuates low female labor force participation in the region.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Safe schools acceleration.</strong> Scale the Safe Schools Initiative from current 14 participating LGAs to all 112 LGAs in the North-East, prioritising the 28 highest-risk LGAs with documented attack histories.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>Accelerated Learning Programmes (ALPs).</strong> Fund a 3-year ALP expansion targeting 1.2M overage OoSC (ages 10–17) through flexible, community-based delivery not dependent on formal school buildings.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Female teacher recruitment incentives.</strong> Introduce hardship allowances and housing support for female teachers deployed to conflict-affected LGAs to raise the current 18% female teacher ratio in the North-East.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">4</div><div class="dr-reco-text"><strong>Real-time OoSC tracking.</strong> Deploy Edu-Data's LGA-level monitoring module to flag enrollment drops exceeding 5% within 30 days, enabling rapid humanitarian response.</div></div>
+  </div>`
+},
+{
+  tag:'o', tagText:'Policy Note', date:'October 2024', pages:'12 pages',
+  title:'Tracking the 26% Education Budget Commitment: Who\'s Complying?',
+  authors:'Edu-Data Nigeria Policy Analysis Unit · DO Take Action',
+  findings:[
+    {val:'7/36',lbl:'States meeting the 26% Abuja target',color:'var(--orange)'},
+    {val:'14.8%',lbl:'Average state education budget share',color:'var(--red)'},
+    {val:'₦420B',lbl:'Estimated annual underfunding gap',color:'var(--red)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Background</div>
+    <p class="dr-p">In 2001, African Union member states signed the Dakar Framework, later reinforced by the Abuja Declaration, committing to allocate at least 26% of national budgets to education. Nigeria as a signatory has never met this target at the federal level. This policy note analyses 2024 state-by-state budget data to assess compliance, identify patterns of underfunding, and quantify the financing gap in human terms.</p>
+    <div class="dr-callout warn"><strong>Key finding:</strong> The national average education budget allocation across all 36 states in 2024 was 14.8% — barely half the 26% commitment. Only 7 states (Lagos, Ogun, Anambra, FCT, Ekiti, Enugu, and Rivers) met or exceeded the target.</div>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Compliance Analysis</div>
+    <table class="dr-table">
+      <thead><tr><th>State</th><th>Education Budget %</th><th>Status</th><th>₦ Gap (B)</th></tr></thead>
+      <tbody>
+        <tr><td>Lagos</td><td style="color:var(--green)">31.2%</td><td style="color:var(--green)">✓ Compliant</td><td>—</td></tr>
+        <tr><td>FCT Abuja</td><td style="color:var(--green)">28.7%</td><td style="color:var(--green)">✓ Compliant</td><td>—</td></tr>
+        <tr><td>Anambra</td><td style="color:var(--green)">27.1%</td><td style="color:var(--green)">✓ Compliant</td><td>—</td></tr>
+        <tr><td>Kano</td><td style="color:var(--orange)">18.3%</td><td style="color:var(--orange)">⚠ Below target</td><td>₦42.1B</td></tr>
+        <tr><td>Kaduna</td><td style="color:var(--orange)">16.9%</td><td style="color:var(--orange)">⚠ Below target</td><td>₦29.4B</td></tr>
+        <tr><td>Borno</td><td style="color:var(--red)">9.4%</td><td style="color:var(--red)">✗ Critical gap</td><td>₦18.7B</td></tr>
+        <tr><td>Zamfara</td><td style="color:var(--red)">8.1%</td><td style="color:var(--red)">✗ Critical gap</td><td>₦14.2B</td></tr>
+      </tbody>
+    </table>
+    <p class="dr-p">The aggregate underfunding gap — the difference between what states actually allocated and what the 26% commitment would require — totals an estimated ₦420 billion in 2024. This gap is equivalent to the construction cost of approximately 84,000 new classrooms, the annual salary of 560,000 primary teachers, or textbooks for 38 million students at current NERDC unit costs.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Why States Underfund Education</div>
+    <p class="dr-p">Analysis of state budget documents and legislative debates identifies three primary mechanisms of underfunding. First, education allocations are passed by state assemblies at compliant levels but systematically diverted mid-year to capital projects, security spending, or recurrent overhead — a practice documented in 12 states in 2024. Second, the actual release of appropriated funds lags significantly: NBS tracking shows that in 2024, states released on average only 71% of appropriated education budgets. Third, population growth has outpaced nominal budget increases: Nigeria's school-age population grew 2.8% in 2024, while real education expenditure fell by 3.1%.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Policy Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Mandatory public reporting.</strong> UBEC should require all 36 states to publish quarterly education expenditure reports against appropriations as a condition for federal matching grants.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>Performance-linked FAAC transfers.</strong> Federal-to-state education transfers under the Federation Account Allocation Committee should include a 5% compliance bonus for states meeting or exceeding the 26% threshold.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Civil society budget tracking.</strong> Platforms like Edu-Data should be formally recognised as accountability partners, with real-time access to state IPPIS salary data and capital project registers to enable independent verification.</div></div>
+  </div>`
+},
+{
+  tag:'g', tagText:'Research', date:'September 2024', pages:'24 pages',
+  title:'Teacher-Pupil Ratios: A State-by-State Deficit Analysis',
+  authors:'Edu-Data Nigeria Research Team · DO Take Action',
+  findings:[
+    {val:'277K',lbl:'Teacher shortfall at primary level',color:'var(--red)'},
+    {val:'1:62',lbl:'North-West average TPR vs 1:40 target',color:'var(--red)'},
+    {val:'31%',lbl:'Of teachers lack minimum qualification',color:'var(--orange)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Executive Summary</div>
+    <p class="dr-p">Nigeria's teacher crisis is simultaneously a quantity and quality problem. At the primary level, the national Teacher-Pupil Ratio (TPR) stands at 1:46 — above UNESCO's recommended 1:40 maximum — but this average conceals extreme state-level disparities. In the North-West, the average TPR reaches 1:62, while rural LGAs in Zamfara and Kebbi record ratios exceeding 1:90. Meanwhile, 31% of practicing teachers lack the Nigeria Certificate in Education (NCE) minimum qualification, rising to 54% in the North-East.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Regional Disparities</div>
+    <table class="dr-table">
+      <thead><tr><th>Zone</th><th>Avg TPR</th><th>Qualified Teachers %</th><th>Female Teachers %</th></tr></thead>
+      <tbody>
+        <tr><td>South-West</td><td style="color:var(--green)">1:36</td><td style="color:var(--green)">84%</td><td style="color:var(--green)">52%</td></tr>
+        <tr><td>South-East</td><td style="color:var(--green)">1:38</td><td style="color:var(--green)">81%</td><td style="color:var(--green)">49%</td></tr>
+        <tr><td>South-South</td><td style="color:var(--orange)">1:41</td><td style="color:var(--green)">79%</td><td style="color:var(--orange)">44%</td></tr>
+        <tr><td>North-Central</td><td style="color:var(--orange)">1:49</td><td style="color:var(--orange)">67%</td><td style="color:var(--orange)">38%</td></tr>
+        <tr><td>North-East</td><td style="color:var(--red)">1:57</td><td style="color:var(--red)">46%</td><td style="color:var(--red)">18%</td></tr>
+        <tr><td>North-West</td><td style="color:var(--red)">1:62</td><td style="color:var(--red)">41%</td><td style="color:var(--red)">21%</td></tr>
+      </tbody>
+    </table>
+    <div class="dr-callout alert"><strong>Crisis zone:</strong> Zamfara State records the worst TPR in Nigeria at 1:89 at primary level. A child in Zamfara has access to less than half the teacher attention of a child in Lagos (TPR 1:32). This structural inequality compounds across every year of schooling.</div>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">The Quality Deficit</div>
+    <p class="dr-p">Beyond raw numbers, Nigeria faces a qualification crisis. An estimated 277,000 teachers are practising without the minimum NCE qualification required by law. This is not a new problem — FME records show the unqualified teacher population has grown 14% since 2019, as states hire cheaper, less-qualified staff to manage budget pressures while maintaining classroom ratios on paper.</p>
+    <p class="dr-p">The consequence is measurable in learning outcomes. NASSI 2023 data shows that students taught by unqualified teachers score an average of 23 percentage points lower on standardised numeracy assessments at Primary 4 level. In states where more than 40% of teachers lack NCE (Borno, Zamfara, Kebbi, Yobe), primary completion rates are all below 55%.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Emergency Teacher Training Programme.</strong> Fast-track a 24-month distance NCE programme targeting the 277,000 unqualified practitioners, delivered through COEs with NTI partnerships.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>Northern deployment incentives.</strong> Introduce a ₦60,000/month hardship supplement for qualified teachers deploying to LGAs with TPR exceeding 1:60, funded from the Education Tax Fund.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Real-time TPR monitoring.</strong> Integrate IPPIS teacher payroll data with Edu-Data's school mapping module to produce monthly LGA-level TPR dashboards accessible to State Universal Basic Education Boards.</div></div>
+  </div>`
+},
+{
+  tag:'y', tagText:'Monthly Brief', date:'August 2024', pages:'15 pages',
+  title:'Digital Infrastructure in Nigerian Schools: EdTech Readiness Index 2024',
+  authors:'Edu-Data Nigeria Research Team · DO Take Action',
+  findings:[
+    {val:'18.4%',lbl:'Schools with internet connectivity',color:'var(--red)'},
+    {val:'₦280B',lbl:'Estimated digital infrastructure gap',color:'var(--orange)'},
+    {val:'61%',lbl:'Lagos connectivity rate vs 4.2% Borno',color:'var(--green)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Executive Summary</div>
+    <p class="dr-p">The promise of EdTech in Nigeria is real — but it collides with a brutal infrastructure reality. This brief presents the 2024 Edu-Data EdTech Readiness Index (ERI), a composite measure of digital infrastructure across Nigeria's 58,841 registered schools. The national ERI score stands at 24.7 out of 100, meaning the average Nigerian school is operating at roughly a quarter of the digital readiness required to meaningfully integrate technology into learning.</p>
+    <p class="dr-p">Only 18.4% of schools have any form of internet connectivity — up from 14.1% in 2022, but far below the 60% target set in Nigeria's National Digital Economy Policy and Strategy (NDEPS) 2020–2030. At current growth rates, Nigeria will not reach 60% school connectivity until 2041.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">State Connectivity Rankings</div>
+    <table class="dr-table">
+      <thead><tr><th>Rank</th><th>State</th><th>Connectivity %</th><th>Device Ratio</th><th>ERI Score</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Lagos</td><td style="color:var(--green)">61.2%</td><td>1:8</td><td style="color:var(--green)">68/100</td></tr>
+        <tr><td>2</td><td>FCT Abuja</td><td style="color:var(--green)">58.4%</td><td>1:7</td><td style="color:var(--green)">64/100</td></tr>
+        <tr><td>3</td><td>Rivers</td><td style="color:var(--green)">44.1%</td><td>1:12</td><td style="color:var(--green)">51/100</td></tr>
+        <tr><td>34</td><td>Zamfara</td><td style="color:var(--red)">5.1%</td><td>1:94</td><td style="color:var(--red)">8/100</td></tr>
+        <tr><td>35</td><td>Yobe</td><td style="color:var(--red)">4.7%</td><td>1:102</td><td style="color:var(--red)">7/100</td></tr>
+        <tr><td>36</td><td>Borno</td><td style="color:var(--red)">4.2%</td><td>1:118</td><td style="color:var(--red)">6/100</td></tr>
+      </tbody>
+    </table>
+    <div class="dr-callout warn"><strong>The digital divide within Nigeria is wider than the divide between many countries.</strong> The gap between Lagos (ERI: 68) and Borno (ERI: 6) is larger than the gap between Kenya and Nigeria as a whole. Digital exclusion at school level predicts digital exclusion in employment — this gap compounds for decades.</div>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">The Investment Gap</div>
+    <p class="dr-p">Reaching 60% national school connectivity by 2030 would require connecting approximately 24,300 additional schools. At NCC's estimated cost of ₦11.5 million per school for basic broadband infrastructure (satellite or fibre last-mile), the capital requirement is approximately ₦280 billion — or ₦46.7 billion per year over six years. Current annual public investment in school digital infrastructure is estimated at ₦12 billion, creating an annual gap of ₦34.7 billion.</p>
+    <p class="dr-p">Public-private partnership models offer the most viable path. The NCC Universal Service Provision Fund (USPF) disbursed only ₦4.2 billion to school connectivity initiatives in 2023 despite having a mandate and funds available. Accelerating USPF deployment to schools, combined with MNO zero-rating agreements for educational platforms, could significantly reduce the effective cost barrier.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Accelerate USPF school connectivity grants.</strong> NCC should increase annual USPF disbursements to schools 4x to ₦16B, prioritising LGAs with zero connected schools.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>MNO zero-rating for educational platforms.</strong> NCC should mandate that MTN, Airtel, Glo, and 9mobile zero-rate approved educational platforms — enabling data-free access for students on mobile devices.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Offline-first EdTech procurement.</strong> FME's EdTech procurement guidelines should mandate offline functionality as a minimum requirement for any platform receiving federal subsidy — ensuring usability in the 82% of schools without connectivity.</div></div>
+  </div>`
+},
+{
+  tag:'o', tagText:'Policy Note', date:'July 2024', pages:'20 pages',
+  title:'Gender Parity in Secondary Education: Progress and Remaining Gaps',
+  authors:'Edu-Data Nigeria Policy Analysis Unit · DO Take Action',
+  findings:[
+    {val:'0.87',lbl:'National Gender Parity Index 2024',color:'var(--orange)'},
+    {val:'0.68',lbl:'North-West GPI — lowest in Nigeria',color:'var(--red)'},
+    {val:'0.97',lbl:'South-West GPI — near parity achieved',color:'var(--green)'}
+  ],
+  body:`
+  <div class="dr-section">
+    <div class="dr-section-title">Executive Summary</div>
+    <p class="dr-p">Nigeria has made measurable progress toward gender parity in education over the past decade: the national Gender Parity Index (GPI) improved from 0.77 in 2015 to 0.87 in 2024 at primary level. However, this aggregate progress conceals deepening polarisation between regions and an alarming transition gap — girls who survive primary school face compounding structural barriers at every subsequent level, with national GPI falling to 0.72 at tertiary level.</p>
+    <p class="dr-p">This policy note examines the drivers of gender disparity across Nigeria's six geopolitical zones, analyses the effectiveness of existing interventions, and proposes a targeted framework for achieving GPI ≥ 0.95 by 2030 — the minimum threshold for a country to be considered gender-equitable in education under UNESCO standards.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">GPI Across Levels and Regions</div>
+    <table class="dr-table">
+      <thead><tr><th>Zone</th><th>Primary GPI</th><th>JSS GPI</th><th>SSS GPI</th><th>2030 Target Feasible?</th></tr></thead>
+      <tbody>
+        <tr><td>South-West</td><td style="color:var(--green)">0.97</td><td style="color:var(--green)">0.94</td><td style="color:var(--green)">0.91</td><td style="color:var(--green)">Yes</td></tr>
+        <tr><td>South-East</td><td style="color:var(--green)">0.96</td><td style="color:var(--green)">0.93</td><td style="color:var(--green)">0.89</td><td style="color:var(--green)">Yes</td></tr>
+        <tr><td>South-South</td><td style="color:var(--green)">0.94</td><td style="color:var(--orange)">0.88</td><td style="color:var(--orange)">0.84</td><td style="color:var(--orange)">Possible</td></tr>
+        <tr><td>North-Central</td><td style="color:var(--orange)">0.86</td><td style="color:var(--orange)">0.80</td><td style="color:var(--orange)">0.74</td><td style="color:var(--orange)">Uncertain</td></tr>
+        <tr><td>North-East</td><td style="color:var(--orange)">0.78</td><td style="color:var(--red)">0.71</td><td style="color:var(--red)">0.61</td><td style="color:var(--red)">No</td></tr>
+        <tr><td>North-West</td><td style="color:var(--red)">0.68</td><td style="color:var(--red)">0.59</td><td style="color:var(--red)">0.48</td><td style="color:var(--red)">No</td></tr>
+      </tbody>
+    </table>
+    <div class="dr-callout alert"><strong>The North-West emergency:</strong> At current trajectory, North-West GPI at senior secondary level will reach 0.48 by 2030 — meaning fewer than half as many girls as boys completing JSS will progress to SSS. Without radical intervention, the region is moving further from parity, not toward it.</div>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Root Causes of Disparity</div>
+    <p class="dr-p">Research combining NBS household surveys, community focus groups conducted in Sokoto and Katsina (2024), and UNICEF MICS data identifies five compounding barriers for girls in the North-West and North-East: early marriage (affecting an estimated 43% of girls before age 18 in Sokoto); distance to school (44% of rural girls travel more than 3km, raising safety concerns); absence of female teachers (21% female teacher share in the North-West); school fees and uniform costs creating household prioritisation of boys; and cultural perceptions of girls' education as less economically valuable given local labour market structures.</p>
+    <p class="dr-p">Importantly, the data shows that when these barriers are addressed simultaneously rather than individually, the effect is multiplicative. Communities where female teachers were recruited, conditional cash transfers deployed, and safe corridors established saw GPI improve by an average of 0.14 points over three years — nearly triple the national improvement rate.</p>
+  </div>
+  <div class="dr-section">
+    <div class="dr-section-title">Recommendations</div>
+    <div class="dr-reco"><div class="dr-reco-num">1</div><div class="dr-reco-text"><strong>Conditional Cash Transfer expansion.</strong> Scale the Girls Education Project (GEP) CCT from current coverage of 180,000 girls to 1.2 million, targeting the 74 LGAs in the North-West and North-East with GPI below 0.60.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">2</div><div class="dr-reco-text"><strong>Female teacher parity quotas.</strong> Set a binding target of 40% female teachers in Northern states by 2027, with recruitment bonuses and community housing to make postings viable.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">3</div><div class="dr-reco-text"><strong>Real-time GPI monitoring.</strong> Integrate Edu-Data's gender parity module into SUBEB reporting cycles to flag LGAs where female enrollment drops more than 3% month-on-month, enabling early intervention.</div></div>
+    <div class="dr-reco"><div class="dr-reco-num">4</div><div class="dr-reco-text"><strong>Community engagement at scale.</strong> Fund 5,000 trained Community Education Advocates in high-disparity LGAs to work with traditional and religious leaders on shifting social norms — the most durable driver of behavior change.</div></div>
+  </div>`
+}
+];
+
+let currentArticle = 0;
+
+function openArticle(idx) {
+  currentArticle = idx;
+  renderArticle(idx);
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle() {
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navArticle(dir) {
+  currentArticle = (currentArticle + dir + ARTICLES.length) % ARTICLES.length;
+  renderArticle(currentArticle);
+  document.getElementById('dr-body').scrollTop = 0;
+}
+
+function renderArticle(idx) {
+  const a = ARTICLES[idx];
+  // Header
+  const tagEl = document.getElementById('dr-tag');
+  tagEl.textContent = a.tagText;
+  tagEl.className = 'dr-tag ' + a.tag;
+  document.getElementById('dr-date').textContent = a.date;
+  document.getElementById('dr-pages').textContent = a.pages;
+  document.getElementById('dr-title').textContent = a.title;
+  document.getElementById('dr-authors').innerHTML = `By <strong>${a.authors.split(' · ')[0]}</strong> · ${a.authors.split(' · ')[1]}`;
+  document.getElementById('dr-source').textContent = a.date;
+  // Nav buttons
+  const prevBtn = document.getElementById('dr-prev');
+  const nextBtn = document.getElementById('dr-next');
+  const prevA = ARTICLES[(idx - 1 + ARTICLES.length) % ARTICLES.length];
+  const nextA = ARTICLES[(idx + 1) % ARTICLES.length];
+  prevBtn.textContent = '← ' + prevA.tagText;
+  nextBtn.textContent = nextA.tagText + ' →';
+  // Key findings
+  const findingsHTML = `<div class="dr-findings">${a.findings.map(f=>`<div class="dr-finding"><div class="dr-finding-val" style="color:${f.color}">${f.val}</div><div class="dr-finding-lbl">${f.lbl}</div></div>`).join('')}</div>`;
+  // Body
+  document.getElementById('dr-body').innerHTML = findingsHTML + a.body;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('drawer').classList.contains('open')) closeArticle();
+});
 </script>
 </body>
 </html>
